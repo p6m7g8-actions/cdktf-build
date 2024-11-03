@@ -1,23 +1,6 @@
 name: "P6 GHA: Builds a CDKTF App"
 description: "P6 GHA: Builds a CDKTF App"
 author: "Philip M. Gollucci"
-inputs:
-  aws_region:
-    description: "AWS region for deployment"
-    required: false
-    default: "us-east-1"
-  aws_role:
-    description: "AWS role to assume"
-    required: true
-  aws_session_name:
-    description: "Session name for the AWS role"
-    required: true
-  cdk_deploy_account:
-    description: "AWS CDK deploy account"
-    required: true
-  cdk_deploy_region:
-    description: "AWS CDK deploy region"
-    required: true
 runs:
   using: "composite"
   steps:
@@ -64,16 +47,6 @@ runs:
         key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-node_modules-
-    - name: Assume role using OIDC
-      uses: aws-actions/configure-aws-credentials@v4.0.2
-      with:
-        aws-region: ${{ inputs.aws_region }}
-        role-to-assume: ${{ inputs.aws_role }}
-        role-session-name: ${{ inputs.aws_session_name }}
     - name: Run build
       shell: bash
-      env:
-        CDK_DEPLOY_ACCOUNT: ${{ inputs.cdk_deploy_account }}
-        CDK_DEPLOY_REGION: ${{ inputs.cdk_deploy_region }}
-        AWS_REGION: ${{ inputs.aws_region }}
       run: pnpm run diff
