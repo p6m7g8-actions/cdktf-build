@@ -47,6 +47,16 @@ runs:
         key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-node_modules-
+    - name: CDKTF bootstrap
+      shell: bash
+      run: |
+        npm install --global cdktf-cli@latest
+        which cdktf
+        cdktf --version
+    - name: Terraform
+      uses: hashicorp/setup-terraform@v3.1.2
+      with:
+        terraform_version: 1.5.7
     - name: Run build
       shell: bash
       run: pnpm run diff
