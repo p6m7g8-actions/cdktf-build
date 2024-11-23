@@ -83,7 +83,7 @@ runs:
         role-to-assume: ${{ inputs.aws_role }}
         role-session-name: ${{ inputs.aws_session_name }}
     - name: OpenTofu
-    - uses: opentofu/setup-opentofu@v1.0.4
+      uses: opentofu/setup-opentofu@v1.0.4
       with:
         tofu_version: 1.8.6
     - name: Run build
