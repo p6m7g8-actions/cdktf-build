@@ -82,14 +82,16 @@ runs:
         aws-region: ${{ inputs.aws_region }}
         role-to-assume: ${{ inputs.aws_role }}
         role-session-name: ${{ inputs.aws_session_name }}
-    - name: Terraform
-      uses: hashicorp/setup-terraform@v3.1.2
+    - name: OpenTofu
+    - uses: opentofu/setup-opentofu@v1.0.4
       with:
-        terraform_version: 1.5.7
+        tofu_version: 1.8.6
     - name: Run build
       shell: bash
       env:
+        CDKTF_LOG_LEVEL: debug
         CDK_DEPLOY_ACCOUNT: ${{ inputs.cdk_deploy_account }}
         CDK_DEPLOY_REGION: ${{ inputs.cdk_deploy_region }}
         AWS_REGION: ${{ inputs.aws_region }}
+        TERRAFORM_BINARY_NAME: tofu
       run: pnpm run diff
