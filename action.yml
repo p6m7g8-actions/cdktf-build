@@ -22,7 +22,7 @@ runs:
   using: "composite"
   steps:
     - name: Checkout code
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v5.0.0
     - name: Node
       uses: p6m7g8-actions/node-setup@main
     - name: CDKTF bootstrap
@@ -32,15 +32,15 @@ runs:
         which cdktf
         cdktf --version
     - name: Assume role using OIDC
-      uses: aws-actions/configure-aws-credentials@v4.1.0
+      uses: aws-actions/configure-aws-credentials@v5.1.0
       with:
         aws-region: ${{ inputs.aws_region }}
         role-to-assume: ${{ inputs.aws_role }}
         role-session-name: ${{ inputs.aws_session_name }}
     - name: OpenTofu
-      uses: opentofu/setup-opentofu@v1.0.5
+      uses: opentofu/setup-opentofu@v1.0.6
       with:
-        tofu_version: 1.8.6
+        tofu_version: 1.10.6
     - name: Run build
       shell: bash
       env:
