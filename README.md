@@ -1,12 +1,12 @@
-# p6m7g8-actions/cdk-build
+# p6m7g8-actions/cdktf-build
 
-- [p6m7g8-actions/cdk-build](#p6m7g8-actionscdk-build)
+- [p6m7g8-actions/cdktf-build](#p6m7g8-actionscdktf-build)
   - [Usage](#usage)
 
 ## Usage
 
 ```yaml
-      - name: CDK Build
+      - name: CDKTF Build
         uses: p6m7g8-actions/cdktf-build@main
         with:
           aws_region: ${{ secrets.CDK_DEPLOY_REGION }}

@@ -28,7 +28,7 @@ runs:
     - name: CDKTF bootstrap
       shell: bash
       run: |
-        npm install --global cdktf-cli@latest
+        npm install --global cdktf-cli@0.21.0
         which cdktf
         cdktf --version
     - name: Assume role using OIDC
