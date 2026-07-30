@@ -1,6 +1,6 @@
-# p6m7g8-actions/cdk-build
+# p6m7g8-actions/cdktf-build
 
-- [p6m7g8-actions/cdk-build](#p6m7g8-actionscdk-build)
+- [p6m7g8-actions/cdktf-build](#p6m7g8-actionscdktf-build)
   - [Usage](#usage)
 
 ## Usage
