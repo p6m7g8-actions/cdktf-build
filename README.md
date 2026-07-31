@@ -7,7 +7,7 @@
 
 ```yaml
       - name: CDKTF Build
-        uses: p6m7g8-actions/cdktf-build@main
+        uses: p6m7g8-actions/p6-cdktf-build@main
         with:
           aws_region: ${{ secrets.CDK_DEPLOY_REGION }}
           aws_role: ${{ secrets.AWS_ROLE }}
